@@ -1,16 +1,14 @@
 const router = require('express').Router()
+const {createEntry,
+    getAllVEs,
+    deleteVEntry
+} = require('../controllers')
 
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET'})
-})
+router.get('/', getAllVEs)
 
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST'})
-})
+router.post('/', createEntry)
 
-router.delete('/', (req, res) => {
-    res.json({mssg: 'DELETE'})
-})
+router.delete('/:id', deleteVEntry)
 
 router.patch('/', (req, res) => {
     res.json({mssg: 'UPDATE'})
