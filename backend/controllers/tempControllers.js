@@ -42,4 +42,26 @@ const mongoose = require('mongoose')
     }
 
 
-    module.exports = { getAllVEs, createEntry, deleteVEntry }
+    // update a workout
+    const updateVEntry = async (req, res) =>{
+        const { id } = req.params
+
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(404).json({error_message: 'Id is not valid!'})
+        }
+
+        const current_VE = await vEntry.findOneAndUpdate({_id : id}, {...req.body})
+
+        if (!current_VE) {
+            return res.status(400).json({error_message : 'Vehicle Entry does not exist!'})
+        }
+
+        const upd_VE = await vEntry.findById({_id: id})
+
+        res.status(200).json([
+            {Message: 'Entry Successfully Updated! Entry is now...'}, 
+            upd_VE ])
+    }
+
+
+    module.exports = { getAllVEs, createEntry, deleteVEntry, updateVEntry }

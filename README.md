@@ -3,6 +3,8 @@
 ## About the App
 This will be a basic CRUD (Create Read Update and Delete) app that runs a MERN stack. This will be a reference where you can search for vehicles based on user specificied criteria such as generation name, engine name, make or model name. There a login functionality and only admin level users can add other users.
 
+**NOTE:** This is an app that is intended as a refresher for me and not going to used as a production app. 
+
 ## User Levels
 
 - **Basic user**

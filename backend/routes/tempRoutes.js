@@ -1,8 +1,10 @@
 const router = require('express').Router()
-const {createEntry,
+const {
+    createEntry,
     getAllVEs,
-    deleteVEntry
-} = require('../controllers')
+    deleteVEntry,
+    updateVEntry
+    } = require('../controllers')
 
 router.get('/', getAllVEs)
 
@@ -10,9 +12,7 @@ router.post('/', createEntry)
 
 router.delete('/:id', deleteVEntry)
 
-router.patch('/', (req, res) => {
-    res.json({mssg: 'UPDATE'})
-})
+router.patch('/:id', updateVEntry)
 
 
 module.exports = router
