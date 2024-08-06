@@ -15,11 +15,11 @@ const vEntry = new Schema({
     },
     trim: {
         type: String,
-        required: true
+        required: false
     },
     engine: {
         type: String,
-        required: true
+        required: false
     },
     transmission: {
         type: String,

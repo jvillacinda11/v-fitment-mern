@@ -6,7 +6,7 @@ const {
     updateVEntry
     } = require('../controllers')
 
-router.get('/', getAllVEs)
+router.get('/all', getAllVEs)
 
 router.post('/', createEntry)
 
