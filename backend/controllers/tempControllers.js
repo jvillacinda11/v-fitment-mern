@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
     // Get All Vehicle Entries
     const getAllVEs = async (req, res) => {
-        const v_entries = await vEntry.find({}).sort({createdAt: -1})
+        const v_entries = await vEntry.find({}).sort({createdAt: -1}).limit(25)
         res.status(200).json(v_entries)
     }
     

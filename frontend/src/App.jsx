@@ -1,27 +1,36 @@
 import React from 'react'
 import { useEffect, useState} from 'react'
+import Navbar from './components/Navbar'
+import Vehicles from './utils/Vehicles'
 
 const App = () => {
   const [vEntries, setVEntries] = useState(null)
 
   useEffect(() => {
-    const fetchPosts = async () =>{
-      const response = await fetch('/api/all')
-      const posts = await response.json()
-      
-      if (response.ok) {
-        console.log(posts)
-      } else {
-        console.log("nope")
+    const loadVehicles = async () =>{
+      try {
+        const vehicles = await Vehicles.get25cars()
+        setVEntries(vehicles)
+      } catch (error) {
+        console.error('Error: ')
+        
       }
     }
-    fetchPosts();
+    loadVehicles();
   },[])
 
   return (
   <>
-    <h1>Look at the console 👀</h1>
-    {}
+  <Navbar />
+    <ul>
+    { vEntries && vEntries.map((vehicle) =>(
+      <li key={vehicle._id}>
+        {vehicle.Year},{vehicle.Make},{vehicle.Model},{vehicle.Trim},{vehicle.Engine},{vehicle.Transmission}
+        <hr />
+      </li>
+      
+    ))}
+    </ul>
   </>
   )
 }
